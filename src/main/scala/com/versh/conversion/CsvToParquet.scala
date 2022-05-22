@@ -22,5 +22,6 @@ object CsvToParquet extends App {
   val df2 = df.toDF(new_cols : _*)
 
   //convert to parquet
-  df2.repartition(1).write.mode(SaveMode.Overwrite).parquet("c:\\out")
+  df2.repartition(1).write.format("parquet").mode(SaveMode.Overwrite)
+    .save("c:\\out")
 }
